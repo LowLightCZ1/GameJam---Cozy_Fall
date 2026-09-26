@@ -1,33 +1,47 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Board : MonoBehaviour
+public class BoardView : MonoBehaviour
 {
     public Transform squereParents;
     public Sprite[] whiteSprites;
     public Sprite[] blackSprites;
 
+    public BoardData Board { get; private set; }
 
-    BoardData board;
+    bool hasSelection;
+    Vector2Int selected;
+
+    PieceType type;
+    PieceColor color;
+    Piece piece;
+
     Image[] pieceImages = new Image[64];
+
+    public PiecesMovement movement;
 
     private void Start()
     {
         for (int i = 0; i <64; i++)
         {
             pieceImages[i] = squereParents.GetChild(i).Find("Piece").GetComponent<Image>();
+            int index = i;
+            squereParents.GetChild(i).GetComponent<Button>()
+                .onClick.AddListener(() => movement.OnSquareClicked(index));
+
         }
 
-        board = new BoardData();
-        board.SetupStartingPosition();
-        Debug.Log("Starting position:\n" + board.ToDebugString());
+        Board = new BoardData();
+        Board.SetupStartingPosition();
+        Debug.Log("Starting position:\n" + Board.ToDebugString());
         Refresh();
+
     }
 
-    void Refresh()
+    public void Refresh()
     {
         for (int i = 0; i < 64; i++){
-            Piece piece = board.Get(BoardData.FromIndex(i));
+            Piece piece = Board.Get(BoardData.FromIndex(i));
             if (piece.IsEmpty)
             {
                 pieceImages[i].gameObject.SetActive(false);
@@ -48,6 +62,10 @@ public class Board : MonoBehaviour
                 pieceImages[i].sprite = sprites[slot];
                 pieceImages[i].gameObject.SetActive(true);
             }
+
+
         }
     }
+
+
 }

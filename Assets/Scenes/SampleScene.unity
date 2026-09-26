@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 16407432}
   - component: {fileID: 16407434}
   m_Layer: 5
-  m_Name: Test
+  m_Name: BoardView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,18 +170,19 @@ MonoBehaviour:
   squereParents: {fileID: 1748837605}
   whiteSprites:
   - {fileID: 21300000, guid: 728b2b8018088a9498c31bedb18cace0, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 29ac989a858475f46ae03decf7adcd5a, type: 3}
   - {fileID: 21300000, guid: 837ad48de74114f4cbd8f8bbf7096f1b, type: 3}
   - {fileID: 21300000, guid: 4a619b5b66c20ee49bcdad3ac4c23bc7, type: 3}
   - {fileID: 21300000, guid: c8e851d1f995ce643a915f2f8be21c1e, type: 3}
   - {fileID: 21300000, guid: 3f7c42f84bb18fc44af4bf4f89b8ae3c, type: 3}
   blackSprites:
   - {fileID: 21300000, guid: 2d935acb7bc6f434ba2650a75f8144d5, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: f31ad2131181bf34081a5186a716f188, type: 3}
   - {fileID: 21300000, guid: 31b544e909a25a840b5fc3c3bab953db, type: 3}
   - {fileID: 21300000, guid: 6c32ede00f9d162419fe42e883e9a016, type: 3}
   - {fileID: 21300000, guid: 3aaba9815ffae5641818a8f9725fbbd1, type: 3}
   - {fileID: 21300000, guid: f6951e133458efe4ca8ce30421bdab30, type: 3}
+  movement: {fileID: 816598755}
 --- !u!1001 &27036467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2583,6 +2584,54 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5510414368854617731, guid: 752fd93e6962b1f48837c15fe28efb1f, type: 3}
   m_PrefabInstance: {fileID: 775344651}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &816598754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 816598756}
+  - component: {fileID: 816598755}
+  m_Layer: 0
+  m_Name: PieceMovement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &816598755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816598754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be4b8b4a5074af4b8d8a66a105120ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PiecesMovement
+  boardView: {fileID: 16407434}
+  moveBorders:
+  - {fileID: -234174340031879073, guid: f40608837471850498ff9b943e2d65ec, type: 3}
+  - {fileID: -856116407242285062, guid: f1adb0e8e1ce35643804a29baf640cf6, type: 3}
+--- !u!4 &816598756
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816598754}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.86632, y: -0.9919, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &841063383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7632,6 +7681,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 816598756}
   - {fileID: 16407432}
   - {fileID: 519420032}
   - {fileID: 619394802}
